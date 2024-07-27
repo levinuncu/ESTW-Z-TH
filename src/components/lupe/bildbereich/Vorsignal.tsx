@@ -7,7 +7,6 @@ type VorsignalProps = Readonly<{
   left?: number;
   right?: number;
   bottom?: number;
-  children: React.ReactNode;
   richtung: "rechts" | "links";
 }>;
 
@@ -16,7 +15,6 @@ export function Vorsignal({
   left,
   bottom,
   right,
-  children,
   richtung,
 }: VorsignalProps) {
   return (
@@ -40,14 +38,6 @@ export function Vorsignal({
         )}
       ></div>
       <div {...stylex.props(styles.fuß)}></div>
-      <div
-        {...stylex.props(
-          styles.bezeichner,
-          richtung === "rechts" && styles.bezeichnerRechts,
-        )}
-      >
-        {children}
-      </div>
     </div>
   );
 }
@@ -93,15 +83,5 @@ const styles = stylex.create({
     width: "4px",
     height: "12px",
     backgroundColor: colors.yellow,
-  },
-  bezeichner: {
-    marginLeft: "8px",
-    color: colors.red,
-    height: "12px",
-    fontSize: "0.95rem",
-  },
-  bezeichnerRechts: {
-    marginLeft: "0px",
-    marginRight: "8px",
   },
 });

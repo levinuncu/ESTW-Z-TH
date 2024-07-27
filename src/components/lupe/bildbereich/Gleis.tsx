@@ -7,18 +7,22 @@ type GleisProps = Readonly<{
   bottom?: number;
   left?: number;
   width?: number;
+  right?: number;
 }>;
 
-export function Gleis({ left, top, width, bottom }: GleisProps) {
+export function Gleis({ left, top, width, right, bottom }: GleisProps) {
   return (
-    <div {...stylex.props(styles.wrapper(top, left, bottom, width))}></div>
+    <div
+      {...stylex.props(styles.wrapper(top, left, bottom, right, width))}
+    ></div>
   );
 }
 
 const styles = stylex.create({
-  wrapper: (top, left, bottom, width) => ({
+  wrapper: (top, left, bottom, right, width) => ({
     top,
     left,
+    right,
     bottom,
     width,
     height: "4px",
