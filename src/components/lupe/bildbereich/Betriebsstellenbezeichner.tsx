@@ -34,5 +34,6 @@ const styles = stylex.create({
     paddingRight: "12px",
     paddingLeft: "12px",
     height: "25px",
+    paddingTop: "2px",
   }),
 });

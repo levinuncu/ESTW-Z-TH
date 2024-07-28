@@ -2,7 +2,7 @@ import stylex from "@stylexjs/stylex";
 
 import { colors } from "@/assets/theme.stylex";
 
-type HauptsignalProps = Readonly<{
+type BlocksignalProps = Readonly<{
   top?: number;
   left?: number;
   right?: number;
@@ -11,14 +11,14 @@ type HauptsignalProps = Readonly<{
   richtung: "rechts" | "links";
 }>;
 
-export function Hauptsignal({
+export function Blocksignal({
   top,
   left,
   bottom,
   right,
   children,
   richtung,
-}: HauptsignalProps) {
+}: BlocksignalProps) {
   return (
     <div
       {...stylex.props(
@@ -108,7 +108,7 @@ const styles = stylex.create({
   },
   bezeichner: {
     marginLeft: "4px",
-    color: colors.red,
+    color: colors.green,
     height: "12px",
     fontSize: "0.95rem",
   },

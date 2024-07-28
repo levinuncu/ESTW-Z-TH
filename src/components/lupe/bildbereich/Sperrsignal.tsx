@@ -2,23 +2,23 @@ import stylex from "@stylexjs/stylex";
 
 import { colors } from "@/assets/theme.stylex";
 
-type HauptsignalProps = Readonly<{
+type SperrsignalProps = Readonly<{
   top?: number;
   left?: number;
   right?: number;
   bottom?: number;
-  children: React.ReactNode;
   richtung: "rechts" | "links";
+  children: React.ReactNode;
 }>;
 
-export function Hauptsignal({
+export function Sperrsignal({
   top,
   left,
   bottom,
   right,
   children,
   richtung,
-}: HauptsignalProps) {
+}: SperrsignalProps) {
   return (
     <div
       {...stylex.props(
@@ -26,16 +26,7 @@ export function Hauptsignal({
         richtung === "rechts" && styles.wrapperRechts,
       )}
     >
-      <div
-        {...stylex.props(styles.top, richtung === "rechts" && styles.topRechts)}
-      ></div>
       <div {...stylex.props(styles.mitte)}></div>
-      <div
-        {...stylex.props(
-          styles.bottom,
-          richtung === "rechts" && styles.bottomRechts,
-        )}
-      ></div>
       <div
         {...stylex.props(
           styles.verbindung,
@@ -68,28 +59,10 @@ const styles = stylex.create({
   wrapperRechts: {
     flexDirection: "row-reverse",
   },
-  top: {
-    height: "12px",
-    width: "6px",
-    backgroundColor: colors.red,
-    borderRadius: "6px 0 0 6px",
-  },
-  topRechts: {
-    borderRadius: "0 6px 6px 0",
-  },
   mitte: {
     height: "12px",
-    width: "12px",
+    width: "8px",
     backgroundColor: colors.red,
-  },
-  bottomRechts: {
-    borderRadius: "6px 0 0 6px",
-  },
-  bottom: {
-    height: "12px",
-    width: "6px",
-    backgroundColor: colors.red,
-    borderRadius: "0 6px 6px 0",
   },
   verbindung: {
     width: "9px",
