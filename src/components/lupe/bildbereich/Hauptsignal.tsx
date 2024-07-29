@@ -9,6 +9,7 @@ type HauptsignalProps = Readonly<{
   bottom?: number;
   children: React.ReactNode;
   richtung: "rechts" | "links";
+  rangier?: boolean;
 }>;
 
 export function Hauptsignal({
@@ -18,6 +19,7 @@ export function Hauptsignal({
   right,
   children,
   richtung,
+  rangier = false,
 }: HauptsignalProps) {
   return (
     <div
@@ -34,6 +36,7 @@ export function Hauptsignal({
         {...stylex.props(
           styles.bottom,
           richtung === "rechts" && styles.bottomRechts,
+          rangier && styles.bottomRangier,
         )}
       ></div>
       <div
@@ -90,6 +93,10 @@ const styles = stylex.create({
     width: "6px",
     backgroundColor: colors.red,
     borderRadius: "0 6px 6px 0",
+  },
+  bottomRangier: {
+    borderRadius: 0,
+    width: "4px",
   },
   verbindung: {
     width: "9px",

@@ -67,6 +67,7 @@ const styles = stylex.create({
     transform: "translateX(-50%)",
     backgroundColor: colors.black,
     width: "22px",
+    paddingLeft: "2px",
     textAlign: "center",
   },
 });

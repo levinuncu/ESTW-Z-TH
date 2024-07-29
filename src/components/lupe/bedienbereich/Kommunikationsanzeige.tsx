@@ -37,6 +37,9 @@ function Sammelmelderzeile() {
         <div {...stylex.props(styles.sammelmelderzeileValue(colors.green))}>
           EV
         </div>
+        <div {...stylex.props(styles.sammelmelderzeileValue(colors.green))}>
+          ZL
+        </div>
       </div>
     </div>
   );

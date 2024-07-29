@@ -7,25 +7,17 @@ type VerschlussmelderProps = Readonly<{
   bottom?: number;
   left?: number;
   right?: number;
-  richtung?: "unten" | "oben";
 }>;
 
-export function Verschlussmelder({
+export function VerschlussmelderWeiche({
   left,
   top,
   right,
   bottom,
-  richtung = "oben",
 }: VerschlussmelderProps) {
   return (
     <div {...stylex.props(styles.wrapper(top, left, bottom, right))}>
-      <div
-        {...stylex.props(
-          styles.melder,
-          richtung === "unten" && styles.melderUnten,
-        )}
-      ></div>
-      <div {...stylex.props(styles.gleis)}></div>
+      <div {...stylex.props(styles.melder)}></div>
     </div>
   );
 }
@@ -41,18 +33,9 @@ const styles = stylex.create({
     display: "flex",
     alignItems: "flex-end",
   }),
-  gleis: {
-    width: "10px",
-    backgroundColor: colors.white,
-    height: "4px",
-  },
   melder: {
     height: "10px",
     width: "3px",
-    backgroundColor: colors.white,
-  },
-  melderUnten: {
-    position: "absolute",
-    top: "6px",
+    backgroundColor: colors.yellow,
   },
 });
