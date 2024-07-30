@@ -1,4 +1,4 @@
 ## L_THP
 ## L_TWR
-![Bildschirmfoto 2024-07-29 um 21 00 22](https://github.com/user-attachments/assets/c1f86601-a399-4213-8e6a-fff979dbd48e)
+![L_TWR](https://github.com/user-attachments/assets/14a4cbe4-d7f0-4c3d-80d6-57a7eda7b04d)
 ## L_TESU
