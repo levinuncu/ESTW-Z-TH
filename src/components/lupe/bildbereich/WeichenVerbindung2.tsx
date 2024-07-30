@@ -1,24 +1,25 @@
 import stylex from "@stylexjs/stylex";
 
 import { colors } from "@/assets/theme.stylex";
+import { Weiche } from "@/constants/weiche";
 
-type WeichenVerbindungProps = Readonly<{
+type WeichenVerbindung2Props = Readonly<{
   top?: number;
   bottom?: number;
   left?: number;
   right?: number;
-  bezeichnungOben: string;
-  bezeichnungUnten: string;
+  weicheOben: Weiche;
+  weicheUnten: Weiche;
 }>;
 
-export function WeichenVerbindung({
+export function WeichenVerbindung2({
   left,
   top,
   right,
   bottom,
-  bezeichnungOben,
-  bezeichnungUnten,
-}: WeichenVerbindungProps) {
+  weicheOben,
+  weicheUnten,
+}: WeichenVerbindung2Props) {
   let newBottom = bottom ? bottom - 25 : undefined;
   return (
     <div {...stylex.props(styles.wrapper(top, left, newBottom, right))}>
@@ -30,7 +31,7 @@ export function WeichenVerbindung({
         </div>
       </div>
       <div>
-        <div {...stylex.props(styles.bezeichnungOben)}>{bezeichnungOben}</div>
+        <div {...stylex.props(styles.bezeichnungOben)}>{weicheOben.name}</div>
         <div {...stylex.props(styles.gleisWrapperOben)}>
           <div {...stylex.props(styles.verschlussmelder)}></div>
           <div {...stylex.props(styles.gleisGerade)}></div>
@@ -41,7 +42,7 @@ export function WeichenVerbindung({
           <div {...stylex.props(styles.verschlussmelder)}></div>
           <div {...stylex.props(styles.gleisGerade)}></div>
         </div>
-        <div {...stylex.props(styles.bezeichnungUnten)}>{bezeichnungUnten}</div>
+        <div {...stylex.props(styles.bezeichnungUnten)}>{weicheUnten.name}</div>
       </div>
     </div>
   );
@@ -51,11 +52,11 @@ const styles = stylex.create({
   gleisWrapperUnten: {
     display: "flex",
     gap: "3px",
+    marginLeft: "35px",
   },
   gleisWrapperOben: {
     display: "flex",
     gap: "3px",
-    marginLeft: "35px",
   },
   wrapper: (top, left, bottom, right) => ({
     top,
@@ -76,12 +77,12 @@ const styles = stylex.create({
     marginTop: "8px",
     color: colors.yellow,
     fontSize: "0.95rem",
+    marginLeft: "35px",
   },
   bezeichnungOben: {
     marginBottom: "4px",
     color: colors.yellow,
     fontSize: "0.95rem",
-    marginLeft: "35px",
   },
   gleisGerade: {
     height: "4px",
@@ -103,28 +104,28 @@ const styles = stylex.create({
   gleisSenkrechtUnten: {
     height: "14px",
     width: "4px",
-    left: "17px",
+    right: "17px",
     bottom: "8px",
     backgroundColor: colors.white,
     position: "absolute",
-    transform: "rotate(35deg)",
+    transform: "rotate(-35deg)",
   },
   gleisSenkrechtOben: {
     height: "14px",
     width: "4px",
     top: "7px",
-    right: "18px",
+    left: "18px",
     position: "absolute",
     backgroundColor: colors.white,
-    transform: "rotate(35deg)",
+    transform: "rotate(-35deg)",
   },
   verschlussmelderSenkrecht: {
     width: "8px",
     height: "3px",
     bottom: "17px",
-    left: "21px",
+    right: "21px",
     backgroundColor: colors.white,
     position: "absolute",
-    transform: "rotate(35deg)",
+    transform: "rotate(-35deg)",
   },
 });

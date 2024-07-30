@@ -1,21 +1,27 @@
 import stylex from "@stylexjs/stylex";
+import { type StoreApi, type UseBoundStore } from "zustand";
 
 import { colors } from "@/assets/theme.stylex";
 import { Bedienbereich } from "@/components/lupe/Bedienbereich";
 import { Bildbereich } from "@/components/lupe/Bildbereich";
+import { LupeState } from "@/constants/lupe/state";
+import { LupeStoreContext } from "@/store/lupe";
 
 type LupeProps = Readonly<{
   children: React.ReactNode;
+  useLupeStore: UseBoundStore<StoreApi<LupeState>>;
 }>;
 
-export function Lupe({ children }: LupeProps) {
+export function Lupe({ children, useLupeStore }: LupeProps) {
   return (
-    <div {...stylex.props(styles.wrapper)}>
-      <div {...stylex.props(styles.inner)}>
-        <Bildbereich>{children}</Bildbereich>
-        <Bedienbereich />
+    <LupeStoreContext.Provider value={useLupeStore}>
+      <div {...stylex.props(styles.wrapper)}>
+        <div {...stylex.props(styles.inner)}>
+          <Bildbereich>{children}</Bildbereich>
+          <Bedienbereich />
+        </div>
       </div>
-    </div>
+    </LupeStoreContext.Provider>
   );
 }
 

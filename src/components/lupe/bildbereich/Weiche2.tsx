@@ -1,19 +1,21 @@
 import stylex from "@stylexjs/stylex";
 
 import { colors } from "@/assets/theme.stylex";
+import { Weiche } from "@/constants/weiche";
 
 type Weiche2Props = Readonly<{
   top?: number;
   bottom?: number;
   left?: number;
   right?: number;
+  weiche: Weiche;
 }>;
 
-export function Weiche2({ left, top, right, bottom }: Weiche2Props) {
+export function Weiche2({ left, top, right, bottom, weiche }: Weiche2Props) {
   return (
     <div {...stylex.props(styles.wrapper(top, left, bottom, right))}>
       <div>
-        <div {...stylex.props(styles.bezeichnung)}>44</div>
+        <div {...stylex.props(styles.bezeichnung)}>{weiche.name}</div>
         <div {...stylex.props(styles.gleisWrapper)}>
           <div {...stylex.props(styles.verschlussmelder)}></div>
           <div {...stylex.props(styles.gleisGeradeOben)}></div>

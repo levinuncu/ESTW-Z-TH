@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import stylex from "@stylexjs/stylex";
 import { type StyleXVar } from "@stylexjs/stylex/lib/StyleXTypes";
 
@@ -13,23 +12,13 @@ const COLORS = [
 ];
 
 export function Monitorkontrollmelder() {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShow((prev) => !prev);
-    }, 1000);
-
-    return () => clearTimeout(timeout);
-  }, [show]);
-
   return (
     <div {...stylex.props(styles.wrapper)}>
       {COLORS.map((color) => (
         <div key={color}>
           <div {...stylex.props(styles.farbeBlock(color))}></div>
           <div
-            {...stylex.props(styles.farbeBlock(show ? color : colors.black))}
+            {...stylex.props(styles.farbeBlock(color), styles.farbeBlockBlink)}
           ></div>
         </div>
       ))}
@@ -49,4 +38,8 @@ const styles = stylex.create({
     width: "11px",
     backgroundColor: color,
   }),
+  farbeBlockBlink: {
+    animation: "blink 2s infinite",
+    visibility: "hidden",
+  },
 });

@@ -21,11 +21,11 @@ export function Bahnsteig({
     <div
       {...stylex.props(
         styles.wrapper(top, left, bottom, right),
-        gleisPosition === "oben" && styles.wrapperTurn,
+        gleisPosition === "oben" && styles.wrapperGleisOben,
       )}
     >
-      {[...Array(14)].map((n) => (
-        <div key={n} {...stylex.props(styles.linie)}></div>
+      {[...Array(14)].map((_, i) => (
+        <div key={i} {...stylex.props(styles.linie)}></div>
       ))}
     </div>
   );
@@ -45,7 +45,7 @@ const styles = stylex.create({
     display: "flex",
     justifyContent: "space-between",
   }),
-  wrapperTurn: {
+  wrapperGleisOben: {
     transform: "rotate(180deg)",
   },
   linie: {

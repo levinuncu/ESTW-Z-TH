@@ -20,16 +20,19 @@ import { Vorsignal } from "@/components/lupe/bildbereich/Vorsignal";
 import { Weiche1 } from "@/components/lupe/bildbereich/Weiche1";
 import { Weiche2 } from "@/components/lupe/bildbereich/Weiche2";
 import { Weiche3 } from "@/components/lupe/bildbereich/Weiche3";
-import { WeichenVerbindung } from "@/components/lupe/bildbereich/WeichenVerbindung";
+import { WeichenVerbindung1 } from "@/components/lupe/bildbereich/WeichenVerbindung1";
+import { WeichenVerbindung2 } from "@/components/lupe/bildbereich/WeichenVerbindung2";
 import { BahnübergangStatus } from "@/constants/bahnübergang";
 import { GleisStatus, type Gleis as GleisType } from "@/constants/gleis";
+import { useLupeStore } from "@/store/lupe";
 
 export function LupeTWR() {
   const TEST_GLEIS: GleisType = {
     status: GleisStatus.FREI,
   };
+  useLupeStore.setState(() => ({ lupe: { betriebsstelle: "TWR" } }));
   return (
-    <Lupe>
+    <Lupe useLupeStore={useLupeStore}>
       <div {...stylex.props(styles.row)}>
         <Weinsberg />
         <BildschirmVerweiß left={20} top={78} richtung="unten">
@@ -44,7 +47,15 @@ export function LupeTWR() {
           }}
           left={40}
           bottom={152}
-          width={163}
+          width={257}
+        />
+        <Gleis
+          gleis={{
+            status: GleisStatus.FREI,
+          }}
+          left={347}
+          bottom={152}
+          width={117}
         />
         <Gleis
           gleis={{
@@ -62,7 +73,6 @@ export function LupeTWR() {
             status: BahnübergangStatus.GRUNDSTELLUNG,
           }}
         />
-
         <Gleis
           gleis={{
             status: GleisStatus.FREI,
@@ -104,6 +114,28 @@ export function LupeTWR() {
         <Hauptsignal left={150} bottom={87} richtung="rechts">
           F46
         </Hauptsignal>
+        <Gleis
+          gleis={{
+            status: GleisStatus.FREI,
+          }}
+          left={206}
+          bottom={108}
+          width={126}
+        />
+        <WeichenVerbindung2
+          weicheOben={{ name: "48" }}
+          weicheUnten={{ name: "47" }}
+          left={300}
+          bottom={108}
+        />
+        <Gleis
+          gleis={{
+            status: GleisStatus.FREI,
+          }}
+          left={382}
+          bottom={108}
+          width={82}
+        />
         <Hauptsignal bottom={121} left={440} richtung="links">
           N42
         </Hauptsignal>
@@ -146,7 +178,7 @@ export function LupeTWR() {
           1
         </LupenVerweiß>
         <Gleis gleis={TEST_GLEIS} left={40} bottom={152} width={105} />
-        <Weiche2 bottom={108} left={148} />
+        <Weiche2 bottom={108} left={148} weiche={{ name: "44" }} />
         <Gleis gleis={TEST_GLEIS} left={215} bottom={152} width={125} />
         <GleisSchräge left={340} bottom={108} richtung="unten" />
         <Gleis gleis={TEST_GLEIS} left={369} bottom={108} width={270} />
@@ -185,13 +217,13 @@ export function LupeTWR() {
           bottom={108}
           width={85}
         />
-        <WeichenVerbindung
-          bezeichnungOben="41"
-          bezeichnungUnten="42"
+        <WeichenVerbindung1
+          weicheOben={{ name: "41" }}
+          weicheUnten={{ name: "42" }}
           left={752}
           bottom={64}
         />
-        <Weiche3 bottom={64} left={215} />
+        <Weiche3 bottom={64} left={215} weiche={{ name: "43" }} />
         <Sperrsignal left={303} bottom={77} richtung="links">
           40X
         </Sperrsignal>
@@ -216,7 +248,7 @@ export function LupeTWR() {
           2
         </LupenVerweiß>
         <Gleis gleis={TEST_GLEIS} left={40} bottom={20} width={75} />
-        <Weiche1 bottom={20} left={118} />
+        <Weiche1 bottom={20} left={118} weiche={{ name: "45" }} />
         <Gleis gleis={TEST_GLEIS} left={185} bottom={20} width={400} />
         <GleisSchräge left={585} bottom={20} richtung="oben" />
         <Gleis

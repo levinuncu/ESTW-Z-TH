@@ -5,7 +5,6 @@ import {
   BahnübergangStatus,
   type Bahnübergang,
 } from "@/constants/bahnübergang";
-import { GleisStatus, type Gleis } from "@/constants/gleis";
 
 type BahnübergangEingleisigProps = Readonly<{
   top?: number;

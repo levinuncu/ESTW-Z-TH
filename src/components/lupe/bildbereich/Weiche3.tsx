@@ -1,15 +1,17 @@
 import stylex from "@stylexjs/stylex";
 
 import { colors } from "@/assets/theme.stylex";
+import { Weiche } from "@/constants/weiche";
 
 type Weiche3Props = Readonly<{
   top?: number;
   bottom?: number;
   left?: number;
   right?: number;
+  weiche: Weiche;
 }>;
 
-export function Weiche3({ left, top, right, bottom }: Weiche3Props) {
+export function Weiche3({ left, top, right, bottom, weiche }: Weiche3Props) {
   let newBottom = bottom ? bottom - 25 : undefined;
   return (
     <div {...stylex.props(styles.wrapper(top, left, newBottom, right))}>
@@ -22,7 +24,7 @@ export function Weiche3({ left, top, right, bottom }: Weiche3Props) {
           <div {...stylex.props(styles.gleisGeradeUnten)}></div>
           <div {...stylex.props(styles.verschlussmelder)}></div>
         </div>
-        <div {...stylex.props(styles.bezeichnung)}>43</div>
+        <div {...stylex.props(styles.bezeichnung)}>{weiche.name}</div>
       </div>
     </div>
   );

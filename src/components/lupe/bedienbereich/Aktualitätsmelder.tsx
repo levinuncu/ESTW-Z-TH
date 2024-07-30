@@ -50,7 +50,7 @@ const styles = stylex.create({
   uzBezeichner: {
     position: "absolute",
     bottom: "57px",
-    left: "94px", //94
+    left: "94px",
   },
   status: {
     position: "absolute",

@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import stylex from "@stylexjs/stylex";
 
+import { LupeStoreContext } from "@/store/lupe";
+
 export function Bildkennung() {
-  return <div {...stylex.props(styles.wrapper)}>L_TWR</div>;
+  const { lupe } = useContext(LupeStoreContext)();
+
+  return <div {...stylex.props(styles.wrapper)}>L_{lupe.betriebsstelle}</div>;
 }
 
 const styles = stylex.create({
