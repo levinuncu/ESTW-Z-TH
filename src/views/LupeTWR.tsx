@@ -69,7 +69,7 @@ export function LupeTWR() {
           bottom={152}
           right={390}
           bahnübergang={{
-            kilometer: "110.0",
+            kilometer: "111.4",
             status: BahnübergangStatus.GRUNDSTELLUNG,
           }}
         />
@@ -161,7 +161,7 @@ export function LupeTWR() {
           bottom={20}
           right={290}
           bahnübergang={{
-            kilometer: "110.0",
+            kilometer: "111.3",
             status: BahnübergangStatus.GRUNDSTELLUNG,
           }}
         />
@@ -259,10 +259,26 @@ export function LupeTWR() {
         />
         <EllhofenGewerbegebiet />
         <Vorsignal bottom={121} right={400} richtung="links" />
+        <Gleis
+          gleis={{
+            status: GleisStatus.FREI,
+          }}
+          right={310}
+          bottom={108}
+          width={136}
+        />
+        <Verschlussmelder bottom={108} right={294} />
         <Hauptsignal bottom={121} right={265} richtung="links">
           A43
         </Hauptsignal>
-        <Gleis gleis={TEST_GLEIS} right={40} bottom={108} width={406} />
+        <Gleis
+          gleis={{
+            status: GleisStatus.FREI,
+          }}
+          right={40}
+          bottom={108}
+          width={251}
+        />
         <LupenVerweiß bottom={71} right={25} richtung="unten-rechts">
           3
         </LupenVerweiß>
@@ -273,9 +289,12 @@ export function LupeTWR() {
         </LupenVerweiß>
       </div>
       <div {...stylex.props(styles.row)}>
+        <Gleis gleis={TEST_GLEIS} left={40} bottom={64} width={99} />
+        <Verschlussmelder bottom={64} left={142} />
         <Blocksignal bottom={75} left={115} richtung="links">
           55
         </Blocksignal>
+        <Gleis gleis={TEST_GLEIS} left={158} bottom={64} width={1082} />
         <Vorsignal bottom={75} left={325} richtung="links" />
         <Ellhofen />
         <Sülzbach />
@@ -286,17 +305,18 @@ export function LupeTWR() {
         <LupenVerweiß bottom={64} left={25} richtung="oben-links">
           3
         </LupenVerweiß>
-        <Gleis gleis={TEST_GLEIS} left={40} bottom={64} width={1200} />
         {/*  */}
         <Vorsignal bottom={0} left={145} richtung="rechts" />
+        <Gleis gleis={TEST_GLEIS} left={40} bottom={20} width={312} />
+        <Verschlussmelder bottom={20} left={355} />
         <Blocksignal bottom={0} left={325} richtung="rechts">
           54
         </Blocksignal>
+        <Gleis gleis={TEST_GLEIS} left={371} bottom={20} width={869} />
         <Vorsignal bottom={0} left={775} richtung="rechts" />
         <LupenVerweiß bottom={20} left={25} richtung="oben-links">
           4
         </LupenVerweiß>
-        <Gleis gleis={TEST_GLEIS} left={40} bottom={20} width={1200} />
         <LupenVerweiß bottom={20} right={25} richtung="oben-rechts">
           D
         </LupenVerweiß>

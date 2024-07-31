@@ -4,6 +4,7 @@ export enum GleisStatus {
   BESETZT,
   ZUGFAHRSTRAßE,
   RANGIERFAHRSTRAßE,
+  AUßERHALB,
 }
 
 export type Gleis = {

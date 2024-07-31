@@ -35,6 +35,10 @@ export function Gleis({ left, top, width, right, bottom, gleis }: GleisProps) {
       backgroundColor = colors.blue;
       break;
     }
+    case GleisStatus.AUßERHALB: {
+      backgroundColor = colors.gray;
+      break;
+    }
   }
   return (
     <div

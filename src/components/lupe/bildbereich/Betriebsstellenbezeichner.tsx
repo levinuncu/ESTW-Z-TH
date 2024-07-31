@@ -33,7 +33,9 @@ const styles = stylex.create({
     fontSize: "1.15rem",
     paddingRight: "12px",
     paddingLeft: "12px",
-    height: "25px",
+    height: "30px",
+    display: "flex",
+    alignItems: "center",
     paddingTop: "2px",
   }),
 });

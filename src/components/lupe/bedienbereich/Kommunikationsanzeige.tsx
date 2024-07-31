@@ -32,9 +32,10 @@ export function Kommunikationsanzeige() {
 function Sammelmelderzeile() {
   const { nachtspannung, tagspannung, weichenLaufketteGesperrt, zuglenkung } =
     useContext(LupeStoreContext)((state) => state.sammelmelderzeile);
+  const lupe = useContext(LupeStoreContext)((state) => state.lupe);
   return (
     <div {...stylex.props(styles.sammelmelderzeile)}>
-      <div>TWR</div>
+      <div>{lupe.betriebsstelle}</div>
       <div {...stylex.props(styles.sammelmelderzeileValues)}>
         <div {...stylex.props(styles.sammelmelderzeileValue(colors.green))}>
           {(tagspannung.ein || tagspannung.stoerung) && (
