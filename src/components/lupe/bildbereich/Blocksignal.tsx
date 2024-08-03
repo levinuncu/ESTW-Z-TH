@@ -1,14 +1,17 @@
 import stylex from "@stylexjs/stylex";
 
 import { colors } from "@/assets/theme.stylex";
+import { HauptsignalStellung } from "@/constants/signal";
 
 type BlocksignalProps = Readonly<{
   top?: number;
   left?: number;
   right?: number;
   bottom?: number;
-  children: React.ReactNode;
   richtung: "rechts" | "links";
+  bezeichnung: string;
+  stellung: HauptsignalStellung;
+  zuglenkung: boolean;
 }>;
 
 export function Blocksignal({
@@ -16,9 +19,26 @@ export function Blocksignal({
   left,
   bottom,
   right,
-  children,
+  bezeichnung,
+  stellung,
   richtung,
+  zuglenkung,
 }: BlocksignalProps) {
+  let backgroundColor;
+  switch (stellung) {
+    case HauptsignalStellung.Hp0: {
+      backgroundColor = colors.red;
+      break;
+    }
+    case HauptsignalStellung.Ks1: {
+      backgroundColor = colors.green;
+      break;
+    }
+    case HauptsignalStellung.Ks2: {
+      backgroundColor = colors.yellow;
+      break;
+    }
+  }
   return (
     <div
       {...stylex.props(
@@ -27,29 +47,32 @@ export function Blocksignal({
       )}
     >
       <div
-        {...stylex.props(styles.top, richtung === "rechts" && styles.topRechts)}
+        {...stylex.props(
+          styles.top(backgroundColor),
+          richtung === "rechts" && styles.topRechts,
+        )}
       ></div>
-      <div {...stylex.props(styles.mitte)}></div>
+      <div {...stylex.props(styles.mitte(backgroundColor))}></div>
       <div
         {...stylex.props(
-          styles.bottom,
+          styles.bottom(backgroundColor),
           richtung === "rechts" && styles.bottomRechts,
         )}
       ></div>
       <div
         {...stylex.props(
-          styles.verbindung,
+          styles.verbindung(backgroundColor),
           richtung === "rechts" && styles.verbindungRechts,
         )}
       ></div>
-      <div {...stylex.props(styles.fuß)}></div>
+      <div {...stylex.props(styles.fuß(backgroundColor))}></div>
       <div
         {...stylex.props(
-          styles.bezeichner,
+          styles.bezeichner(zuglenkung ? colors.green : colors.red),
           richtung === "rechts" && styles.bezeichnerRechts,
         )}
       >
-        {children}
+        {bezeichnung}
       </div>
     </div>
   );
@@ -68,50 +91,50 @@ const styles = stylex.create({
   wrapperRechts: {
     flexDirection: "row-reverse",
   },
-  top: {
+  top: (backgroundColor) => ({
     height: "12px",
     width: "6px",
-    backgroundColor: colors.red,
+    backgroundColor,
     borderRadius: "6px 0 0 6px",
-  },
+  }),
   topRechts: {
     borderRadius: "0 6px 6px 0",
   },
-  mitte: {
+  mitte: (backgroundColor) => ({
     height: "12px",
     width: "12px",
-    backgroundColor: colors.red,
-  },
+    backgroundColor,
+  }),
   bottomRechts: {
     borderRadius: "6px 0 0 6px",
   },
-  bottom: {
+  bottom: (backgroundColor) => ({
     height: "12px",
     width: "6px",
-    backgroundColor: colors.red,
+    backgroundColor,
     borderRadius: "0 6px 6px 0",
-  },
-  verbindung: {
+  }),
+  verbindung: (backgroundColor) => ({
     width: "9px",
     height: "6px",
     marginLeft: "-1px",
-    backgroundColor: colors.red,
-  },
+    backgroundColor,
+  }),
   verbindungRechts: {
     marginLeft: "0",
     marginRight: "-1px",
   },
-  fuß: {
+  fuß: (backgroundColor) => ({
     width: "4px",
     height: "12px",
-    backgroundColor: colors.red,
-  },
-  bezeichner: {
+    backgroundColor,
+  }),
+  bezeichner: (color) => ({
     marginLeft: "4px",
-    color: colors.green,
+    color,
     height: "12px",
     fontSize: "0.95rem",
-  },
+  }),
   bezeichnerRechts: {
     marginLeft: "0px",
     marginRight: "4px",

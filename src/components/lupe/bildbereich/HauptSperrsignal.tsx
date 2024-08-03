@@ -1,38 +1,24 @@
 import stylex from "@stylexjs/stylex";
 
 import { colors } from "@/assets/theme.stylex";
-import { SperrsignalStellung } from "@/constants/signal";
 
-type SperrsignalProps = Readonly<{
+type HauptSperrsignalProps = Readonly<{
   top?: number;
   left?: number;
   right?: number;
   bottom?: number;
+  children: React.ReactNode;
   richtung: "rechts" | "links";
-  bezeichnung: string;
-  stellung: SperrsignalStellung;
 }>;
 
-export function Sperrsignal({
+export function HauptSperrsignal({
   top,
   left,
   bottom,
   right,
-  stellung,
-  bezeichnung,
+  children,
   richtung,
-}: SperrsignalProps) {
-  let backgroundColor;
-  switch (stellung) {
-    case SperrsignalStellung.Sh0: {
-      backgroundColor = colors.red;
-      break;
-    }
-    case SperrsignalStellung.Sh1: {
-      backgroundColor = colors.white;
-      break;
-    }
-  }
+}: HauptSperrsignalProps) {
   return (
     <div
       {...stylex.props(
@@ -40,7 +26,17 @@ export function Sperrsignal({
         richtung === "rechts" && styles.wrapperRechts,
       )}
     >
-      <div {...stylex.props(styles.mitte(backgroundColor))}></div>
+      <div
+        {...stylex.props(styles.top, richtung === "rechts" && styles.topRechts)}
+      ></div>
+      <div {...stylex.props(styles.mitte)}></div>
+      <div
+        {...stylex.props(
+          styles.bottom,
+          richtung === "rechts" && styles.bottomRechts,
+          styles.bottomRangier,
+        )}
+      ></div>
       <div
         {...stylex.props(
           styles.verbindung,
@@ -54,7 +50,7 @@ export function Sperrsignal({
           richtung === "rechts" && styles.bezeichnerRechts,
         )}
       >
-        {bezeichnung}
+        {children}
       </div>
     </div>
   );
@@ -73,12 +69,33 @@ const styles = stylex.create({
   wrapperRechts: {
     flexDirection: "row-reverse",
   },
-  mitte: (backgroundColor) => ({
+  top: {
     height: "12px",
-    width: "8px",
-    backgroundColor,
-    position: "relative",
-  }),
+    width: "6px",
+    backgroundColor: colors.red,
+    borderRadius: "6px 0 0 6px",
+  },
+  topRechts: {
+    borderRadius: "0 6px 6px 0",
+  },
+  mitte: {
+    height: "12px",
+    width: "12px",
+    backgroundColor: colors.red,
+  },
+  bottomRechts: {
+    borderRadius: "6px 0 0 6px",
+  },
+  bottom: {
+    height: "12px",
+    width: "6px",
+    backgroundColor: colors.red,
+    borderRadius: "0 6px 6px 0",
+  },
+  bottomRangier: {
+    borderRadius: 0,
+    width: "4px",
+  },
   verbindung: {
     width: "9px",
     height: "6px",

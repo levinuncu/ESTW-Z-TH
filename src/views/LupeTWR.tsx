@@ -11,6 +11,7 @@ import { Gleis } from "@/components/lupe/bildbereich/Gleis";
 import { GleisSchräge } from "@/components/lupe/bildbereich/GleisSchräge";
 import { Haltepunktbezeichner } from "@/components/lupe/bildbereich/Haltepunktbezeichner";
 import { Hauptsignal } from "@/components/lupe/bildbereich/Hauptsignal";
+import { HauptSperrsignal } from "@/components/lupe/bildbereich/HauptSperrsignal";
 import { LupenVerweiß } from "@/components/lupe/bildbereich/LupenVerweiß";
 import { Prellbock } from "@/components/lupe/bildbereich/Prellbock";
 import { Rangierfahrstraßenziel } from "@/components/lupe/bildbereich/Rangierfahrstraßenziel";
@@ -24,6 +25,11 @@ import { WeichenVerbindung1 } from "@/components/lupe/bildbereich/WeichenVerbind
 import { WeichenVerbindung2 } from "@/components/lupe/bildbereich/WeichenVerbindung2";
 import { BahnübergangStatus } from "@/constants/bahnübergang";
 import { GleisStatus, type Gleis as GleisType } from "@/constants/gleis";
+import {
+  HauptsignalStellung,
+  SperrsignalStellung,
+  VorsignalStellung,
+} from "@/constants/signal";
 import { useLupeStore } from "@/store/lupe";
 
 export function LupeTWR() {
@@ -81,9 +87,13 @@ export function LupeTWR() {
           bottom={152}
           width={134}
         />
-        <Sperrsignal left={640} bottom={131} richtung="rechts">
-          41Y
-        </Sperrsignal>
+        <Sperrsignal
+          stellung={SperrsignalStellung.Sh0}
+          bezeichnung="41Y"
+          left={640}
+          bottom={131}
+          richtung="rechts"
+        />
         <Verschlussmelder bottom={152} left={680} />
         <Gleis
           gleis={{
@@ -149,9 +159,9 @@ export function LupeTWR() {
           bottom={108}
           width={194}
         />
-        <Hauptsignal rangier left={640} bottom={87} richtung="rechts">
+        <HauptSperrsignal left={640} bottom={87} richtung="rechts">
           P42
-        </Hauptsignal>
+        </HauptSperrsignal>
         <Verschlussmelder bottom={108} left={467} />
         <LupenVerweiß bottom={71} left={25} richtung="unten-links">
           B
@@ -224,9 +234,13 @@ export function LupeTWR() {
           bottom={64}
         />
         <Weiche3 bottom={64} left={215} weiche={{ name: "43" }} />
-        <Sperrsignal left={303} bottom={77} richtung="links">
-          40X
-        </Sperrsignal>
+        <Sperrsignal
+          stellung={SperrsignalStellung.Sh0}
+          bezeichnung="40X"
+          left={303}
+          bottom={77}
+          richtung="links"
+        />
         <Verschlussmelder bottom={64} left={315} />
         <Rangierfahrstraßenziel richtung="rechts" left={480} bottom={44}>
           40Y
@@ -258,7 +272,12 @@ export function LupeTWR() {
           width={25}
         />
         <EllhofenGewerbegebiet />
-        <Vorsignal bottom={121} right={400} richtung="links" />
+        <Vorsignal
+          stellung={VorsignalStellung.Vr0}
+          bottom={121}
+          right={400}
+          richtung="links"
+        />
         <Gleis
           gleis={{
             status: GleisStatus.FREI,
@@ -291,11 +310,21 @@ export function LupeTWR() {
       <div {...stylex.props(styles.row)}>
         <Gleis gleis={TEST_GLEIS} left={40} bottom={64} width={99} />
         <Verschlussmelder bottom={64} left={142} />
-        <Blocksignal bottom={75} left={115} richtung="links">
-          55
-        </Blocksignal>
+        <Blocksignal
+          bottom={75}
+          left={115}
+          richtung="links"
+          bezeichnung="55"
+          stellung={HauptsignalStellung.Hp0}
+          zuglenkung={false}
+        />
         <Gleis gleis={TEST_GLEIS} left={158} bottom={64} width={1082} />
-        <Vorsignal bottom={75} left={325} richtung="links" />
+        <Vorsignal
+          stellung={VorsignalStellung.Vr0}
+          bottom={75}
+          left={325}
+          richtung="links"
+        />
         <Ellhofen />
         <Sülzbach />
         <SülzbachSchule />
@@ -306,14 +335,29 @@ export function LupeTWR() {
           3
         </LupenVerweiß>
         {/*  */}
-        <Vorsignal bottom={0} left={145} richtung="rechts" />
+        <Vorsignal
+          stellung={VorsignalStellung.Vr0}
+          bottom={0}
+          left={145}
+          richtung="rechts"
+        />
         <Gleis gleis={TEST_GLEIS} left={40} bottom={20} width={312} />
         <Verschlussmelder bottom={20} left={355} />
-        <Blocksignal bottom={0} left={325} richtung="rechts">
-          54
-        </Blocksignal>
+        <Blocksignal
+          bottom={0}
+          left={325}
+          richtung="rechts"
+          bezeichnung="54"
+          stellung={HauptsignalStellung.Hp0}
+          zuglenkung={false}
+        />
         <Gleis gleis={TEST_GLEIS} left={371} bottom={20} width={869} />
-        <Vorsignal bottom={0} left={775} richtung="rechts" />
+        <Vorsignal
+          stellung={VorsignalStellung.Vr0}
+          bottom={0}
+          left={775}
+          richtung="rechts"
+        />
         <LupenVerweiß bottom={20} left={25} richtung="oben-links">
           4
         </LupenVerweiß>

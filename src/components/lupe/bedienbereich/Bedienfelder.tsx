@@ -1,13 +1,21 @@
 import stylex from "@stylexjs/stylex";
 
 import { Button } from "@/components/Button";
+import { useGlobalStore } from "@/store/global";
 
 export function Bedienfelder() {
+  const t = useGlobalStore();
   return (
     <div {...stylex.props(styles.wrapper)}>
       <div {...stylex.props(styles.row)}>
         <div {...stylex.props(styles.group)}>
-          <Button disabled>Verarbeiten</Button>
+          <Button
+            onClick={() => {
+              t.zwIncrement();
+            }}
+          >
+            Verarbeiten
+          </Button>
           <Button disabled>KF1</Button>
           <Button disabled>Quittieren</Button>
         </div>
